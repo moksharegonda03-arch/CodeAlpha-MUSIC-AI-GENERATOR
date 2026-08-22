@@ -1,0 +1,52 @@
+from flask import Flask, render_template, send_file
+from generate import generate_music
+import os
+
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+
+@app.route("/generate")
+def generate():
+
+    try:
+        output_file = generate_music(200)
+
+        return render_template(
+            "index.html",
+            success=True,
+            music_file=output_file
+        )
+
+    except Exception as e:
+
+        return render_template(
+            "index.html",
+            error=str(e)
+        )
+
+
+@app.route("/download")
+def download():
+
+    file_path = "output.mid"
+
+    if os.path.exists(file_path):
+        return send_file(
+            file_path,
+            as_attachment=True,
+            download_name="AI_Generated_Music.mid"
+        )
+
+    return "Music file not found."
+
+
+if __name__ == "__main__":
+    app.run(
+        debug=True
+    )

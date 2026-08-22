@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+
+.venv/
+venv/
+env/
+
+.vscode/
+
+output.mid
+
+*.h5
+
+notes_data.pkl
+note_to_int.pkl
+int_to_note.pkl

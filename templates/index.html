@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Music AI Generator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>🎵 Music AI Generator</h1>
+
+            <p class="subtitle">
+                Generate original music using Artificial Intelligence
+            </p>
+
+            <div class="music-icon">
+                🎹 🎶 🎧
+            </div>
+
+            <p>
+                Our AI model learns patterns from MIDI music
+                and generates a new musical composition.
+            </p>
+
+            <a href="/generate" class="generate-button">
+                Generate Music
+            </a>
+
+            {% if success %}
+
+                <div class="success">
+
+                    <h2>🎉 Music Generated!</h2>
+
+                    <p>
+                        Your AI-generated music is ready.
+                    </p>
+
+                    <a href="/download"
+                       class="download-button">
+                        Download MIDI
+                    </a>
+
+                </div>
+
+            {% endif %}
+
+            {% if error %}
+
+                <div class="error">
+
+                    <h3>Something went wrong</h3>
+
+                    <p>{{ error }}</p>
+
+                </div>
+
+            {% endif %}
+
+            <div class="info">
+
+                <div>
+                    <strong>AI Model</strong>
+                    <span>LSTM Neural Network</span>
+                </div>
+
+                <div>
+                    <strong>Dataset</strong>
+                    <span>MIDI Music</span>
+                </div>
+
+                <div>
+                    <strong>Output</strong>
+                    <span>MIDI File</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
